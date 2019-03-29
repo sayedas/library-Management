@@ -1,0 +1,61 @@
+﻿@model IEnumerable<LibrarySystem.Models.RecordsTable>
+
+
+@{
+   // Viewbag.title = "index";
+   @*@if (Session["customerId"] == null)
+    {
+        Response.Redirect("~/login/index");
+    }*@
+}
+
+<h1> User Dashboard</h1>
+<html>
+<head>
+    <title>DashBoard</title>
+</head>
+<body>
+    <div>
+        <h2> Welcome @Session["customerName"]</h2>
+        </div>
+
+
+    <div class="form-group">
+        <div class="col-md-offset-10 col-md-5">
+            <a href="@Url.Action("Index","BorrowBook")">Borrow New Book</a>
+        </div>
+    </div><br/><br/><br/><br />
+
+
+    <table class="table table-bordered table-responsive table-hover">
+<tr>
+        <th> BookId </th>
+       <th>Issued Date</th>
+         <th>Return Date</th>
+</tr>
+        @foreach (LibrarySystem.Models.RecordsTable records in Model)
+        {
+            <tr>
+                <td>@records.BookId</td>
+                <td>@records.IssueDate</td>
+                <td>@records.ReturnDate</td>
+                @if(@records.isApproved==true)
+                {
+                    <td>Approved</td>
+                }
+                else
+                {
+                    <td>Yet to be Approved</td>
+                }
+            </tr>
+        }
+  
+</table>
+
+
+       <div>
+        <a href="@Url.Action("Index","Login")">Logout</a>
+    </div>
+</body>
+</html>
+

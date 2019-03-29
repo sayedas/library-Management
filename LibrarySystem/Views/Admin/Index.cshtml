@@ -1,0 +1,43 @@
+﻿@model IEnumerable<LibrarySystem.Models.RecordsTable>
+@{
+    ViewBag.Title = "Index";
+}
+<h1>Hello Admin</h1>
+<h3>Admin Dashboard</h3>
+
+<div>
+  <h1><a href="@Url.Action("Index","InsertBooks")">Insert New Books</a></h1> 
+</div>
+
+<br/>
+<br/>
+<h3>Here are the Requests for the new Books</h3>
+<table class="table table-bordered table-responsive table-hover">
+    <tr>
+        <th> BookId </th>
+        <th>Customer Id</th>
+        <th>Action</th>
+    </tr>
+    @foreach (LibrarySystem.Models.RecordsTable records in Model)
+    {
+        <tr>
+            <td>@records.BookId</td>
+            <td>@records.customerId</td>
+            <td>@records.isApproved</td>
+            <td><a href="@Url.Action("Index", "ApproveBook", new { bookid = records.BookId, customerid=records.customerId})">APPROVE</a></td>
+
+        </tr>
+    }
+
+</table>
+
+<div>
+    <a href="@Url.Action("Index","Login")">Logout</a>
+</div>
+
+
+
+
+
+
+

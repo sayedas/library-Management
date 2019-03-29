@@ -1,0 +1,51 @@
+﻿@model List<SelectListItem>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Select Books</h2>
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<style>
+    #ddlBooks {
+        border: 2px solid #000;
+        padding: 15px;
+        font-size: 26px;
+        background: #fff;
+        color: black;
+    }
+    .rest {
+        display: inline-block;
+        max-width: 150px;
+        min-width: 231px;
+    }
+</style>
+<body>
+    @using (Html.BeginForm("Index", "BorrowBook", FormMethod.Post))
+    {
+        @Html.DropDownList("ddlBooks", Model)
+        <br />
+        <br />
+    <div class="form-group rest">
+        <div class="col-md-offset-1 col-md-5">
+            <input type="submit" value="Submit" class="btn btn-danger" />
+        </div>
+    </div> 
+    }
+    @if (ViewBag.Message != null)
+    {
+        <script type="text/javascript">
+            window.onload = function () {
+                alert("@ViewBag.Message");
+            };
+        </script>
+    }
+</body>
+
+</html>
+
