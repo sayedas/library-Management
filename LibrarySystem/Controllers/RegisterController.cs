@@ -14,6 +14,10 @@ namespace LibrarySystem.Controllers
         // GET: /Register/
         public ActionResult Index()
         {
+            if (Session["customerId"] != null)
+            {
+                Response.Redirect("~/Home/Index");
+            }
             Customer customer = new Customer();
             return View(customer);
         }
@@ -29,11 +33,11 @@ namespace LibrarySystem.Controllers
                 }
                 else
                 {
-                    db.Customers.Add(customer);
+                    db.Customers.Add(customer);            //Adding all the information to the database
                     db.SaveChanges();
                 }  
             }
-            ModelState.Clear();
+            ModelState.Clear();             //Rebuild the model to be passed to your view.
             ViewBag.SuccessMessage = "Done! Your Successfully Registered."; 
 
             return View("Index",new Customer());

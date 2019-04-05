@@ -6,7 +6,8 @@
 
 <h2>Insert New Book</h2>
 
-
+@using (Html.BeginForm("Index", "InsertBooks","Formmethod.Post"))
+{
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
@@ -63,3 +64,4 @@
 <div>
     <a href="@Url.Action("Index","Admin")">Back</a>
 </div>
+}

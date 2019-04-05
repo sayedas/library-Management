@@ -30,9 +30,6 @@ namespace LibrarySystem.Controllers
                ViewBag.SuccessMessage = "Book details are added successfully";
                return View("Index", new LibraryBook());
            }
-           
-
-
             return View();
         }
 	}

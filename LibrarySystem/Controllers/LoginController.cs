@@ -13,9 +13,14 @@ namespace LibrarySystem.Controllers
         // GET: /Login/
         public ActionResult Index()
         {
+            if (Session["customerId"] != null)
+            {
+                Response.Redirect("~/Home/Index");
+            }
             return View();
         }
         [HttpPost]
+        [OutputCache(NoStore = true, Duration = 1)]
         public ActionResult Authorize(LibrarySystem.Models.Customer customerModel)
         {
             using (librarySystem db = new librarySystem())
@@ -52,7 +57,7 @@ namespace LibrarySystem.Controllers
                     return RedirectToAction("Index", "Home");
                 }
             }
-         return View();
+             return View();
         }
 	}
 }

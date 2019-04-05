@@ -14,7 +14,7 @@ namespace LibrarySystem.Controllers
         public ActionResult Index()
         {
             librarySystem entity = new librarySystem();
-            var BookRequest = entity.RecordsTables.Where(t => t.isApproved == false);
+            var BookRequest = entity.RecordsTables.Where(t => t.isApproved == false);     //display all books that are false
             return View(BookRequest);
         }
 	}

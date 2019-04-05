@@ -32,7 +32,7 @@ namespace LibrarySystem.Controllers
                  if (record < 10)
                  {
                       int customerid = Convert.ToInt32(Session["customerId"]);
-                      var avalibility = entities.RecordsTables.Where(x => x.BookId == BookId && x.customerId == customerid).Count();//not assigning the same book again to the same user
+                      var avalibility = entities.RecordsTables.Where(x => x.BookId == BookId && x.customerId == customerid).Count();//not assigning the same book again to the same user(if the book is not assigned goes to the if statement.)
                      if (avalibility == 0)
                      {
                          var recordData = new RecordsTable { BookId = BookId, customerId = customerid, isApproved=false, IssueDate = DateTime.Now, ReturnDate = DateTime.Now.AddDays(7) };
@@ -60,7 +60,7 @@ namespace LibrarySystem.Controllers
         private static List<SelectListItem> GetBooks()
         {
             librarySystem entities = new librarySystem();
-            List<SelectListItem> BookList = (from p in entities.LibraryBooks.AsEnumerable()
+            List<SelectListItem> BookList = (from p in entities.LibraryBooks.AsEnumerable()   //Here all the books from the database are taken and put them in the dropdown list.
                                                  select new SelectListItem
                                                  {
                                                      Text = p.Title,

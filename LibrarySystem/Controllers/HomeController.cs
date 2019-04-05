@@ -9,7 +9,7 @@ namespace LibrarySystem.Controllers
 {
     public class HomeController : Controller
     {
-        librarySystem entities = new librarySystem();
+        librarySystem entities = new librarySystem();     //Home Controller is the user DashBoard
         //
         // GET: /Home/
         public ActionResult Index()

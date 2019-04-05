@@ -2,13 +2,17 @@
 
 @{
     ViewBag.Title = "Index";
+    //if (Session["customerId"] != null)
+    //{
+    //    Response.Redirect("~/Home/Index");
+    //}
 }
 
 <h2>Login as Admin or User here!</h2>
 
 @using (Html.BeginForm("Authorize","Login","FormMethod.Post")) 
 {
-    @Html.AntiForgeryToken()
+   // @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
         <h4>Login Form</h4>

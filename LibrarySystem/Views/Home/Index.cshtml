@@ -3,10 +3,10 @@
 
 @{
    // Viewbag.title = "index";
-   @*@if (Session["customerId"] == null)
+   if (Session["customerId"] == null)
     {
-        Response.Redirect("~/login/index");
-    }*@
+        Response.Redirect("~/Login/Index");
+    }
 }
 
 <h1> User Dashboard</h1>
@@ -54,7 +54,8 @@
 
 
        <div>
-        <a href="@Url.Action("Index","Login")">Logout</a>
+           @Html.ActionLink("LogOut","LogOff","Logout")
+        @*<a href="@Url.Action("Index","Login")">Logout</a>*@
     </div>
 </body>
 </html>
